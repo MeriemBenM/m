@@ -1,0 +1,56 @@
+﻿@model List<Node>
+<!--Add Nodes-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+
+            <div class="card-body">
+                <h4 class="card-title">Ajouter des noeuds blockchain</h4>
+                <p class="card-text"> Entrez une liste d'URL de nœuds Blockchain séparées par une virgule et cliquez sur le bouton "Add" pour les ajouter</p>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="container alert alert-secondary">
+    <form id="node_form" method="post" action="@Url.Action("RegisterNodes", "Home")">
+<div class="row">
+    <label class="col-sm-2">Nodes URLs:</label>
+    <div class="col-sm-10">
+        <input type="text" name="nodes" id="nodes" row="2" class="form-control" />
+    </div>
+</div>
+        <br>
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <input type="submit" id="add_node_button" class="btn btn-primary btn-lg" value="Add Node" /> 
+            </div>
+        </div>
+</form>
+</div> 
+
+<hr>
+
+<!--List of Nodes-->
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card-body">
+                <h4 class="card-title">ce nœud peut récupérer des données Blockchain à partir des nœuds suivants:</h4>
+            </div>
+        </div>
+
+        <div class="col-lg-12" id="list_nodes">
+            <ul>
+                @foreach(var item in Model)
+                {
+                    <li><a href="@item.Address">@item.Address</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
